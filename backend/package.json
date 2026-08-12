@@ -20,6 +20,7 @@
     "ioredis": "^6.0.0",
     "mongoose": "^9.9.2",
     "multer": "^2.2.0",
+    "sharp": "^0.35.3",
     "uuid": "^14.0.1"
   },
   "devDependencies": {
