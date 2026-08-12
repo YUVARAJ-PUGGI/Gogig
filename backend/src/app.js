@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import mediaRouter from "./routes/media.routes.js";
 
 const app = express();
 
@@ -12,5 +13,7 @@ app.get("/api/health", (req, res) => {
         message: "gOGig Media Processing API is running"
     });
 });
+
+app.use("/api/media", mediaRouter);
 
 export default app;
