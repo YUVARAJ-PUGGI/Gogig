@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import Media from "../models/Media.js";
+import mediaQueue from "../queue/media.queue.js";
 
 export const uploadMedia = async (req, res) => {
     try {
@@ -20,6 +21,10 @@ export const uploadMedia = async (req, res) => {
             fileSize: req.file.size,
             status: "pending"
         });
+        await mediaQueue.add("process-media", {
+    processingId: media.processingId,
+    filePath: media.filePath
+});
 
         return res.status(201).json({
             success: true,
