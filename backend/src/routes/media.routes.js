@@ -1,9 +1,37 @@
 import express from "express";
+
 import upload from "../middleware/upload.middleware.js";
-import { uploadMedia } from "../controllers/media.controller.js";
+
+import {
+    uploadMedia,
+    getMediaStatus
+} from "../controllers/media.controller.js";
+
 
 const router = express.Router();
 
-router.post("/", upload.single("image"), uploadMedia);
+
+/*
+ * Upload image
+ *
+ * POST /api/media
+ */
+router.post(
+    "/",
+    upload.single("image"),
+    uploadMedia
+);
+
+
+/*
+ * Get processing status and results
+ *
+ * GET /api/media/:processingId
+ */
+router.get(
+    "/:processingId",
+    getMediaStatus
+);
+
 
 export default router;

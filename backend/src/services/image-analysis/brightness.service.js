@@ -1,7 +1,7 @@
 import sharp from "sharp";
 
 const DARK_THRESHOLD = 60;
-const BRIGHT_THRESHOLD = 200;
+const BRIGHT_THRESHOLD = 190;
 
 export const detectBrightness = async (filePath) => {
     const { data, info } = await sharp(filePath)
