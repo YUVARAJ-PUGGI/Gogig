@@ -2,7 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import "./App.css";
 
-const API_BASE_URL = "http://localhost:5000";
+const API_BASE_URL =
+    import.meta.env.VITE_API_URL || "http://localhost:5000";
 
 function App() {
     const [selectedFile, setSelectedFile] = useState(null);
@@ -122,8 +123,8 @@ function App() {
 
             setError(
                 err.response?.data?.message ||
-                err.message ||
-                "Failed to upload image. Make sure the backend is running."
+                    err.message ||
+                    "Failed to upload image. Make sure the backend is running."
             );
         }
     };
@@ -159,8 +160,8 @@ function App() {
 
                     setError(
                         data.error ||
-                        data.analysisResults?.error ||
-                        "Image processing failed."
+                            data.analysisResults?.error ||
+                            "Image processing failed."
                     );
 
                     if (intervalId) {
@@ -245,7 +246,6 @@ function App() {
 
             </header>
 
-
             {/* MAIN */}
             <main className="container">
 
@@ -270,7 +270,6 @@ function App() {
 
                 </section>
 
-
                 {/* WORKSPACE */}
                 <section className="workspace">
 
@@ -294,7 +293,6 @@ function App() {
                             </div>
 
                         </div>
-
 
                         <div
                             className={`drop-zone ${
@@ -363,7 +361,6 @@ function App() {
 
                         </div>
 
-
                         {/* SELECTED FILE */}
                         {selectedFile && (
 
@@ -397,7 +394,6 @@ function App() {
 
                         )}
 
-
                         {/* ERROR */}
                         {error && (
 
@@ -412,7 +408,6 @@ function App() {
                             </div>
 
                         )}
-
 
                         {/* ANALYZE BUTTON */}
                         <button
@@ -435,7 +430,6 @@ function App() {
                         </button>
 
                     </div>
-
 
                     {/* RESULTS CARD */}
                     <div className="results-card">
@@ -464,7 +458,6 @@ function App() {
 
                         </div>
 
-
                         {/* EMPTY STATE */}
                         {status === "idle" && (
 
@@ -486,7 +479,6 @@ function App() {
                             </div>
 
                         )}
-
 
                         {/* PROCESSING STATE */}
                         {(status === "uploading" ||
@@ -517,7 +509,6 @@ function App() {
 
                         )}
 
-
                         {/* RESULTS */}
                         {result && (
 
@@ -545,7 +536,6 @@ function App() {
 
                                 )}
 
-
                                 {/* ANALYSIS CARDS */}
                                 <div className="result-grid">
 
@@ -566,7 +556,6 @@ function App() {
                                         }
                                     />
 
-
                                     <ResultItem
                                         title="Blur Detection"
                                         value={
@@ -582,14 +571,13 @@ function App() {
                                         positive={!blur?.isBlurry}
                                     />
 
-
                                     <ResultItem
                                         title="Brightness"
                                         value={
                                             brightness?.level
                                                 ? capitalize(
-                                                    brightness.level
-                                                )
+                                                      brightness.level
+                                                  )
                                                 : "N/A"
                                         }
                                         detail={
@@ -601,7 +589,6 @@ function App() {
                                             brightness?.level === "normal"
                                         }
                                     />
-
 
                                     <ResultItem
                                         title="Dimensions"
@@ -622,7 +609,6 @@ function App() {
 
                                 </div>
 
-
                                 {/* TECHNICAL DETAILS */}
                                 <div className="technical-details">
 
@@ -636,7 +622,6 @@ function App() {
                                         </code>
                                     </div>
 
-
                                     <div>
                                         <span>
                                             File type
@@ -646,7 +631,6 @@ function App() {
                                             {result.mimeType}
                                         </strong>
                                     </div>
-
 
                                     <div>
                                         <span>
@@ -659,11 +643,7 @@ function App() {
                                         </strong>
                                     </div>
 
-
-                                    {/* IMPORTANT FIX:
-                                        Only show matched processing ID
-                                        when the image is actually a duplicate.
-                                    */}
+                                    {/* Only show matched ID for duplicates */}
                                     {duplicate?.isDuplicate &&
                                         duplicate?.matchedProcessingId && (
 
@@ -680,7 +660,6 @@ function App() {
                                         )}
 
                                 </div>
-
 
                                 {/* NEW ANALYSIS */}
                                 <button
@@ -700,7 +679,6 @@ function App() {
                 </section>
 
             </main>
-
 
             {/* FOOTER */}
             <footer>
