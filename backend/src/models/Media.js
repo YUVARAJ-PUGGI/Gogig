@@ -28,6 +28,14 @@ const mediaSchema = new mongoose.Schema(
             type: Number,
             required: true
         },
+        sha256Hash: {
+        type: String,
+        index: true
+        },
+
+        perceptualHash: {
+        type: String
+        },
 
         status: {
             type: String,
