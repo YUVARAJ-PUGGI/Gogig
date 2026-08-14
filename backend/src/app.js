@@ -13,7 +13,12 @@ app.get("/api/health", (req, res) => {
         message: "gOGig Media Processing API is running"
     });
 });
-
+app.get("/", (req, res) => {
+    res.status(200).json({
+        success: true,
+        message: "GoGig API is running 🚀"
+    });
+});
 app.use("/api/media", mediaRouter);
 
 export default app;
