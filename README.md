@@ -53,6 +53,8 @@ https://github.com/YUVARAJ-PUGGI/Gogig
 
 ---
 
+
+
 ## 1. Overview
 
 The core objective of gOGig is to demonstrate a reliable asynchronous media-processing pipeline.
@@ -524,29 +526,27 @@ Example response:
 # 9. Project Structure
 
 ```text
-Gogig/
-│
+gogig/
 ├── backend/
+│   ├── .env.example
+│   ├── .gitignore
+│   ├── package.json
 │   ├── src/
+│   │   ├── app.js
+│   │   ├── server.js
 │   │   ├── config/
 │   │   │   ├── cloudinary.js
 │   │   │   └── db.js
-│   │   │
 │   │   ├── controllers/
 │   │   │   └── media.controller.js
-│   │   │
 │   │   ├── middleware/
 │   │   │   └── upload.middleware.js
-│   │   │
 │   │   ├── models/
 │   │   │   └── Media.js
-│   │   │
 │   │   ├── queue/
 │   │   │   └── media.queue.js
-│   │   │
 │   │   ├── routes/
 │   │   │   └── media.routes.js
-│   │   │
 │   │   ├── services/
 │   │   │   ├── cloudinary.service.js
 │   │   │   └── image-analysis/
@@ -561,30 +561,35 @@ Gogig/
 │   │   │       ├── test-dimensions.js
 │   │   │       ├── test-duplicate.js
 │   │   │       └── test-phash.js
-│   │   │
 │   │   ├── workers/
 │   │   │   └── media.worker.js
-│   │   │
-│   │   ├── app.js
-│   │   └── server.js
-│   │
-│   ├── package.json
-│   └── .env.example
+│   │   └── uploads/
+│   └── .gitignore
 │
 ├── frontend/
+│   ├── .env
+│   ├── .env.example
+│   ├── .gitignore
+│   ├── eslint.config.js
+│   ├── index.html
+│   ├── package.json
+│   ├── public/
 │   ├── src/
-│   │   ├── App.jsx
 │   │   ├── App.css
+│   │   ├── App.jsx
+│   │   ├── assets/
 │   │   ├── index.css
 │   │   ├── main.jsx
-│   │   └── assets/
-│   │
-│   ├── package.json
-│   └── .env.example
+│   │   └── ...
+│   └── vite.config.js
+│
+├── screenshots/
+│   ├── assignment-image-1-result.png
+│   ├── assignment-image-2-result.png
+│   └── assignment-image-3-result.png
 │
 ├── .gitignore
 ├── README.md
-└── package.json
 ```
 
 ---
@@ -846,6 +851,18 @@ The three sample images provided as part of the assignment were tested using the
 All three images successfully passed through the asynchronous processing pipeline and reached the `completed` state.
 
 The screenshots submitted with the assignment demonstrate the frontend results for these sample images.
+
+### Sample Image 1 — image1.jpeg
+
+![Sample Image 1 Result](./screenshots/assignment-image-1-result.png)
+
+### Sample Image 2 — image2.jpeg
+
+![Sample Image 2 Result](./screenshots/assignment-image-2-result.png)
+
+### Sample Image 3 — image3.jpeg
+
+![Sample Image 3 Result](./screenshots/assignment-image-3-result.png)
 
 ### Important Duplicate Detection Note
 
